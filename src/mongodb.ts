@@ -10,6 +10,12 @@ const options = {};
 let client;
 let clientPromise: Promise<MongoClient>;
 
+declare global {
+  namespace globalThis {
+    var _mongoClientPromise: Promise<MongoClient>;
+  }
+}
+
 if (!process.env.MONGODB_URI) {
   throw new Error('Please add your Mongo URI to .env.local');
 }
