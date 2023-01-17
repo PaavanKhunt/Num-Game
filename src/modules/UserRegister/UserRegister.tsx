@@ -23,7 +23,6 @@ export const UserRegister = () => {
         .form_coatainer {
           display: flex;
           flex-direction: column;
-          height: 100%;
           align-items: center;
         }
 

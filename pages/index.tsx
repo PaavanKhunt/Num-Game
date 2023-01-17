@@ -1,10 +1,7 @@
 import Head from 'next/head';
-import { Inter } from '@next/font/google';
 import App from '../src/modules/App';
 import UserContextProvider from '../src/context/UserContext/UserContext';
 import { RoomContextProvider } from '../src/context/RoomContext/RoomContext';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (
