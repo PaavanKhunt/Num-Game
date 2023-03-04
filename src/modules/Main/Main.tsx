@@ -1,28 +1,26 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { User } from '../../types/user';
 import { Inter } from '@next/font/google';
 import { UserRegister } from '../UserRegister';
 import Atropos from 'atropos/react';
+import { UserContext } from '../../context/UserContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const Main = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const getUsers = useCallback(async () => {
-    const response = await fetch('/api/game/users/list', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
 
-    const data = await response.json();
-    return setUsers(data);
-  }, []);
+  const getUsers = useContext(UserContext);
 
-  useEffect(() => {
-    getUsers();
-  }, [getUsers]);
+  useMemo(async () => {
+    getUsers?.users ? setUsers(getUsers?.users) : setUsers([]);
+  }, [getUsers?.users]);
 
   return (
     <div className="register_container inter">

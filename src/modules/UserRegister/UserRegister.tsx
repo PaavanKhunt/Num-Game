@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 export const UserRegister = () => {
   const [name, setName] = React.useState<string>('');
@@ -11,10 +12,13 @@ export const UserRegister = () => {
       },
       body: JSON.stringify({ name }),
     });
-    console.log(response);
-
     const data = await response.json();
-    console.log(data);
+    if (data.error) {
+      toast.error(data.error);
+    }
+    if (data.name) {
+      toast.success('User registered successfully');
+    }
   };
 
   return (

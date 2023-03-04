@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import App from '../src/modules/App';
-import UserContextProvider from '../src/context/UserContext/UserContext';
-import { RoomContextProvider } from '../src/context/RoomContext/RoomContext';
+import UserContextProvider from '../src/context/UserContext';
+import { RoomContextProvider } from '../src/context/RoomContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   return (
@@ -17,6 +19,7 @@ export default function Home() {
           <App />
         </RoomContextProvider>
       </UserContextProvider>
+      <ToastContainer />
     </>
   );
 }
